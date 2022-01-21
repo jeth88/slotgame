@@ -167,7 +167,7 @@ var ITEM_COUNT = 6;
 var SLOT_SPEED = 15;
 var DRAW_OFFSET = 45;
 
-var BLURB_TBL = [
+var BLURB_MSG = [
     'Try again!',
     'Nice!',
     'Keep it up!',
@@ -197,22 +197,22 @@ function InitSlotGame() {
     var game = new Game();
 
     var items = [
-        {path: 'reel-icon-1', id: 'reel1'},
-        {path: 'reel-icon-2', id: 'reel2'},
-        {path: 'reel-icon-3', id: 'reel3'},
-        {path: 'reel-icon-4', id: 'reel4'},
-        {path: 'reel-icon-5', id: 'reel5'},
-        {path: 'reel-icon-6', id: 'reel6'}
+        {path: 'reel-icon-1', id: 'icon1'},
+        {path: 'reel-icon-2', id: 'icon2'},
+        {path: 'reel-icon-3', id: 'icon3'},
+        {path: 'reel-icon-4', id: 'icon4'},
+        {path: 'reel-icon-5', id: 'icon5'},
+        {path: 'reel-icon-6', id: 'icon6'}
     ];
     
     var audios = {
         'roll': {path: 'roll'},
-        'reel1': {path: 'reels/reel-icon-1'},
-        'reel2': {path: 'reels/reel-icon-2'},
-        'reel3': {path: 'reels/reel-icon-3'},
-        'reel4': {path: 'reels/reel-icon-4'},
-        'reel5': {path: 'reels/reel-icon-5'},
-        'reel6': {path: 'reels/reel-icon-6'},
+        'icon1': {path: 'reels/reel-icon-1'},
+        'icon2': {path: 'reels/reel-icon-2'},
+        'icon3': {path: 'reels/reel-icon-3'},
+        'icon4': {path: 'reels/reel-icon-4'},
+        'icon5': {path: 'reels/reel-icon-5'},
+        'icon6': {path: 'reels/reel-icon-6'},
         'win2': {path: '2ofaKind'},
         'win3': {path: '3ofaKind'},
         'nowin1': {path: '1TryAgain'},
@@ -331,9 +331,9 @@ Game.prototype.setJackpotResult = function () {
         }
     }
     
-    this.result1 = _find( this.items1, 'reel4' );
-    this.result2 = _find( this.items2, 'reel4' );
-    this.result3 = _find( this.items3, 'reel4' );
+    this.result1 = _find( this.items1, 'icon4' );
+    this.result2 = _find( this.items2, 'icon4' );
+    this.result3 = _find( this.items3, 'icon4' );
 };
 
 Game.prototype.restart = function () {
@@ -384,9 +384,9 @@ Game.prototype.loop = function () {
 Game.prototype.checkWinLine = function() {
     var matchCount = 0;
 
-    if (this.items1[this.result1].id == 'reel4') matchCount++;
-    if (this.items2[this.result2].id == 'reel4') matchCount++;
-    if (this.items3[this.result3].id == 'reel4') matchCount++;
+    if (this.items1[this.result1].id == 'icon4') matchCount++;
+    if (this.items2[this.result2].id == 'icon4') matchCount++;
+    if (this.items3[this.result3].id == 'icon4') matchCount++;
 
     return matchCount;
 };
@@ -460,7 +460,7 @@ Game.prototype.update = function () {
             var matches = this.checkWinLine();
             $('#results').show();
             $('#multiplier').text(matches);
-            $('#status').text(BLURB_TBL[matches]);
+            $('#status').text(BLURB_MSG[matches]);
 
             if (matches == 3) {
                 this.audios.win3.play();
